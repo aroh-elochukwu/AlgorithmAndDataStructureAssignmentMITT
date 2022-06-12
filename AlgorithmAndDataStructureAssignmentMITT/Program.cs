@@ -1,58 +1,29 @@
-﻿// function call to use vending machine
-// accept product price and amount tendered
-// calls a function return change to customer and returns a customer greeting message
+﻿using System.Text;
 
- string useVendingMachine(int productCost, int amountTendered)
+// “RTFFFFYYUPPPEEEUU”
+
+string stringReducer(string caseString)
 {
-    int customerChange = amountTendered - productCost;
-    string machineOutput = "";
+    string stringToReduce = caseString;
 
-    if(customerChange > 0)
-    {
-        Console.WriteLine("Please collect your merchandise");
-        machineOutput = string.Format("Please Wait, Dispensing {0} Dollars" , customerChange);
+    StringBuilder returnString = new StringBuilder();
+    
+    int presentCharCount = 0;
 
-    } else if (customerChange < 0)
-    {
-        machineOutput = string.Format("You have not tendered enough money for this merchandise");
+    for (int index = 0; index < stringToReduce.Length; index++)
+    {          
+        if ( stringToReduce[index] != stringToReduce[index + 1])
+        {
+            returnString.Append(stringToReduce[index]);
+        }
+        else if ( stringToReduce[index] == stringToReduce[index + 1])
+        {
+            presentCharCount++;
+        }
     }
 
-    // Still to decipher how to delay this function call with a set timeout kinda thing
-    Console.WriteLine(tenderCustomerChange(customerChange));
 
-
-    return  machineOutput ;
+    return "infisenfknefkosw";
 }
 
-// accepts amount to return to customer
-// from available dispenser drawer returns change customer
-
-string tenderCustomerChange(int customerChange)
-{
-    Dictionary<int, int> vendingMachineCashDrawer = new Dictionary<int, int>();
-
-    vendingMachineCashDrawer.Add(20, 1);
-    vendingMachineCashDrawer.Add(10, 15);
-    vendingMachineCashDrawer.Add(5, 15);
-    vendingMachineCashDrawer.Add(2, 15);
-    vendingMachineCashDrawer.Add(1, 15);
-
-    int amountToDispense = customerChange;
-
-    int[] dollarBills = new int[] {20, 10, 5, 2, 1};
-
-    foreach (int dollar in dollarBills)
-    {
-        while (amountToDispense > dollar & vendingMachineCashDrawer[dollar] > 0)
-        {
-            amountToDispense = amountToDispense - dollar;
-            vendingMachineCashDrawer[dollar] = vendingMachineCashDrawer[dollar] - 1;
-            Console.WriteLine(dollar + " bills dispensed");
-        }
-
-    }   
-    
-    return "Thanks for your patronage, Enjoy the rest of your day";
-}
-
-Console.WriteLine(useVendingMachine(1, 50));
+stringReducer("RTFFFFYYUPPPEEEUU");
