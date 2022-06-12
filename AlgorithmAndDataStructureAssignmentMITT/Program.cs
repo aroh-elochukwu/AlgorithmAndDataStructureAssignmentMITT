@@ -29,65 +29,28 @@
 
 string tenderCustomerChange(int customerChange)
 {
-    Dictionary<string, int> vendingMachineCashDrawer = new Dictionary<string, int>();
+    Dictionary<int, int> vendingMachineCashDrawer = new Dictionary<int, int>();
 
-    vendingMachineCashDrawer.Add("20 Dollars", 1);
-    vendingMachineCashDrawer.Add("10 Dollars", 15);
-    vendingMachineCashDrawer.Add("5 Dollars", 15);
-    vendingMachineCashDrawer.Add("2 Dollars", 15);
-    vendingMachineCashDrawer.Add("1 Dollar", 15);
+    vendingMachineCashDrawer.Add(20, 1);
+    vendingMachineCashDrawer.Add(10, 15);
+    vendingMachineCashDrawer.Add(5, 15);
+    vendingMachineCashDrawer.Add(2, 15);
+    vendingMachineCashDrawer.Add(1, 15);
 
     int amountToDispense = customerChange;
 
-    //still to review code and stop repetiton of code below
+    int[] dollarBills = new int[] {20, 10, 5, 2, 1};
 
-    /*
-
-    string[] dollarBills = new string[] {"20 Dollars", "10 Dollars", "5 Dollars", "2 Dollars", "1 Dollar"};
-
-    foreach (string dollar in dollarBills)
+    foreach (int dollar in dollarBills)
     {
-        while (amountToDispense > 20 & vendingMachineCashDrawer["20 Dollars"] > 0)
+        while (amountToDispense > dollar & vendingMachineCashDrawer[dollar] > 0)
         {
-            amountToDispense = amountToDispense - 20;
-            vendingMachineCashDrawer["20 Dollars"] = vendingMachineCashDrawer["20 Dollars"] - 1;
-            Console.WriteLine("Dispenses 20 Dollars");
+            amountToDispense = amountToDispense - dollar;
+            vendingMachineCashDrawer[dollar] = vendingMachineCashDrawer[dollar] - 1;
+            Console.WriteLine(dollar + " bills dispensed");
         }
 
-    }
-    */
-
-    
-    while (amountToDispense  > 20 & vendingMachineCashDrawer["20 Dollars"] > 0  )
-    {
-        amountToDispense = amountToDispense - 20;
-        vendingMachineCashDrawer["20 Dollars"] = vendingMachineCashDrawer["20 Dollars"] -1;
-        Console.WriteLine("Dispenses 20 Dollars");  
-    }
-    while (amountToDispense > 10 & vendingMachineCashDrawer["10 Dollars"] > 0)
-    {
-        amountToDispense = amountToDispense - 10;
-        vendingMachineCashDrawer["10 Dollars"] = vendingMachineCashDrawer["10 Dollars"] - 1;
-        Console.WriteLine("Dispenses 10 Dollars");
-    }
-    while (amountToDispense > 5 & vendingMachineCashDrawer["5 Dollars"] > 0)
-    {
-        amountToDispense = amountToDispense - 5;
-        vendingMachineCashDrawer["5 Dollars"] = vendingMachineCashDrawer["5 Dollars"] - 1;
-        Console.WriteLine("Dispenses 5 Dollars");
-    }
-    while (amountToDispense > 2 & vendingMachineCashDrawer["2 Dollars"] > 0)
-    {
-        amountToDispense = amountToDispense - 2;
-        vendingMachineCashDrawer["2 Dollars"] = vendingMachineCashDrawer["2 Dollars"] - 1;
-        Console.WriteLine("Dispenses 2 Dollars");
-    }
-    while (amountToDispense > 1 & vendingMachineCashDrawer["1 Dollar"] > 0)
-    {
-        amountToDispense = amountToDispense - 1;
-        vendingMachineCashDrawer["1 Dollar"] = vendingMachineCashDrawer["1 Dollar"] - 1;
-        Console.WriteLine("Dispenses 1 Dollar");
-    }
+    }   
     
     return "Thanks for your patronage, Enjoy the rest of your day";
 }
